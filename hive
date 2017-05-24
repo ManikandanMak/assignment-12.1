@@ -1,0 +1,24 @@
+package userdefined;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.hadoop.hive.ql.exec.UDF;
+
+public class concat extends UDF{
+	public String evaluate (String input1, ArrayList<String> input2) {
+		String str = input2.get(0).toString();
+		int flag =0;
+		Iterator i = input2.iterator();
+		while(i.hasNext())
+		{
+			if(flag ==0)
+			{
+				flag++;
+			}
+			else 
+				str=str+input1+i.next().toString();
+		}
+		return str;
+}
+}
